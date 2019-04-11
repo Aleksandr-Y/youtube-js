@@ -123,7 +123,7 @@ function start() {
       'playlistId': 'PL3LQJkGQtzc5G7wIQfVqBMEprmTKZIaXf'
     });
   }).then(function (response) {
-   console.log(response.result);
+    console.log(response.result);
 
     response.result.items.forEach(item => {
       let card = document.createElement('a');
@@ -177,8 +177,8 @@ function search(target) {
     }).then(function (response) {
       // console.log(response.result);
 
-     videosWrapper.innerHTML = '';
-      
+      videosWrapper.innerHTML = '';
+
       response.result.items.forEach(item => {
         let card = document.createElement('a');
         card.classList.add('videos__item', 'videos__item-active');
@@ -206,7 +206,7 @@ function search(target) {
 
 
       sliceTitle('.videos__item-descr', 100);
-    bindModal(document.querySelectorAll('.videos__item'));
+      bindModal(document.querySelectorAll('.videos__item'));
 
     }).catch((e) => {
       console.log(e);
@@ -216,7 +216,9 @@ function search(target) {
 
 document.querySelector('.search').addEventListener('submit', (e) => {
   e.preventDefault();
-  gapi.load('client', () => {search(document.querySelector('.search > input').value)});
+  gapi.load('client', () => {
+    search(document.querySelector('.search > input').value)
+  });
   document.querySelector('.search > input').value = '';
 });
 
